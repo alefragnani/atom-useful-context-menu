@@ -1,6 +1,6 @@
 # Useful Context Menu Package for Atom
 
-A set of useful context menu actions
+A set of useful context menu actions for Atom
 
 ## Available Actions
 
