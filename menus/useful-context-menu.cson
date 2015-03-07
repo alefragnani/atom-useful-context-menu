@@ -1,0 +1,22 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+# 'context-menu':
+#   'atom-text-editor': [
+#     {
+#       'label': 'Toggle useful-context-menu'
+#       'command': 'useful-context-menu:toggle'
+#     }
+#   ]
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'Useful Context Menu'
+      'submenu': [
+        {
+          'label': 'Toggle'
+          'command': 'useful-context-menu:toggle'
+        }
+      ]
+    ]
+  }
+]
