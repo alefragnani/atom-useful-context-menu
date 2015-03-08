@@ -17,7 +17,7 @@ By now, I have added a few actions
 - Open In File Manager
 - Open In Terminal
 
-![A screenshot of your package](./screenshot.png)
+![Useful Context Menu](screenshot.png)
 
 ## TODO List
 

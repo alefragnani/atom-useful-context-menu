@@ -1,3 +1,9 @@
+## 0.2.0 - Second Release
+* Clean up the code (issue #2)
+* Updated the license
+* Added keywords to `package.json`
+* Fixed the screenshot in `readme.md`
+
 ## 0.1.0 - First Release
 * Every feature added
 * Every bug fixed

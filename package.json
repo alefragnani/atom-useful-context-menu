@@ -5,6 +5,16 @@
   "description": "A set of useful context menu actions",
   "repository": "https://github.com/alefragnani/useful-context-menu",
   "license": "MIT",
+  "keywords": [
+    "useful",
+    "context",
+    "menu",
+    "copy",
+    "path",
+    "clipboard",
+    "open",
+    "terminal"
+  ],
   "engines": {
     "atom": ">=0.174.0 <2.0.0"
   },
