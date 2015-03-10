@@ -1,4 +1,3 @@
-UsefulContextMenuView = require './useful-context-menu-view'
 {CompositeDisposable} = require 'atom'
 shell = require 'shell'
 path = require 'path'
@@ -6,20 +5,11 @@ exec = require('child_process').exec
 
 
 module.exports = UsefulContextMenu =
-  usefulContextMenuView: null
-  modalPanel: null
   subscriptions: null
 
   activate: (state) ->
-    @usefulContextMenuView = new UsefulContextMenuView(state.usefulContextMenuViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @usefulContextMenuView.getElement(), visible: false)
-
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
-
-    # Register command that toggles this view
-    #@subscriptions.add atom.commands.add 'atom-workspace', 'useful-context-menu:toggle': => @toggle()
-#    @toggle()
 
     # Copy Paths
     @subscriptions.add atom.commands.add 'atom-workspace', 'useful-context-menu:copy-file-path': => @copyFilePath()
@@ -33,9 +23,7 @@ module.exports = UsefulContextMenu =
     @toggle()
 
   deactivate: ->
-    @modalPanel.destroy()
     @subscriptions.dispose()
-    @usefulContextMenuView.destroy()
 
   serialize: ->
 
