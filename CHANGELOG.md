@@ -1,3 +1,9 @@
+## 0.3.0 - Second Release
+* Grouping option (issue #3)
+
+## 0.2.1 - Second Release
+* Fixing screenshots for atom.io site
+
 ## 0.2.0 - Second Release
 * Clean up the code (issue #2)
 * Updated the license

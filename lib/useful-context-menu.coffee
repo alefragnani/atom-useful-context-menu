@@ -6,10 +6,20 @@ exec = require('child_process').exec
 
 module.exports = UsefulContextMenu =
   subscriptions: null
+  
+  config:
+    groupItems:
+      type: 'boolean'
+      title: 'Group Items'
+      description: 'Add all ontext menu items in a group called "Usefull"'
+      default: false
 
   activate: (state) ->
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
+    
+    # The menu items that will be added to context menu
+    @menuItems = new CompositeDisposable
 
     # Copy Paths
     @subscriptions.add atom.commands.add 'atom-workspace', 'useful-context-menu:copy-file-path': => @copyFilePath()
@@ -20,37 +30,34 @@ module.exports = UsefulContextMenu =
     @subscriptions.add atom.commands.add 'atom-workspace', 'useful-context-menu:open-in-file-manager': => @openInFileManager()
     @subscriptions.add atom.commands.add 'atom-workspace', 'useful-context-menu:open-in-terminal': => @openInTerminal()
 
+    @groupItemsObserveSubscription = atom.config.observe 'useful-context-menu.groupItems', => @toggle()
+
     @toggle()
 
   deactivate: ->
+    @removeItems()
     @subscriptions.dispose()
-
-  serialize: ->
+    @groupItemsObserveSubscription.dispose()
 
   copyFilePath: ->
     item = atom.workspace.getActivePaneItem()
     filePath = item?.getPath?()
-#    atom.notifications.addSuccess('Copying file path ... ' + filePath)
     atom.clipboard.write(filePath) if filePath
 
   copyFilename: ->
     item = atom.workspace.getActivePaneItem()
     filename = item?.getTitle?()
-#    atom.notifications.addSuccess('Copying filename ... ' + filename)
     atom.clipboard.write(filename) if filename
 
   copyFolderPath: ->
     item = atom.workspace.getActivePaneItem()
     filePath = item?.getPath?()
     filePath = path.dirname(filePath)
-#    atom.notifications.addSuccess('Copying folder name ... ' + filePath)
     atom.clipboard.write(filePath) if filePath
-
 
   openInFileManager: ->
     item = atom.workspace.getActivePaneItem()
     filePath = item?.getPath?()
-#    atom.notifications.addSuccess('Opening in File Manager... ' + filePath)
     shell.showItemInFolder(filePath) if filePath
 
   openTerminal: (dirpath) ->
@@ -64,36 +71,55 @@ module.exports = UsefulContextMenu =
     item = atom.workspace.getActivePaneItem()
     filePath = item?.getPath?()
     filePath = path.dirname(filePath)
-#    atom.notifications.addSuccess('Opening in Terminal ' + filePath)
     @openTerminal filePath
 
+  removeItems: ->
+    @menuItems.dispose()
+    @menuItems = new CompositeDisposable
 
   toggle: ->
     console.log 'UsefulContextMenu was toggled!'
-
+    @removeItems()
+        
     # Open the section
-    atom.contextMenu.add {
+    @menuItems.add atom.contextMenu.add {
       'atom-text-editor': [{type: 'separator'}]
     }
 
-    # Copy...
-    atom.contextMenu.add {
-      'atom-text-editor': [
-                           {label: 'Copy File Path', command: 'useful-context-menu:copy-file-path'},
-                           {label: 'Copy Filename', command: 'useful-context-menu:copy-filename'},
-                           {label: 'Copy Folder Path', command: 'useful-context-menu:copy-folder-path'}
-                          ]
-    }
-
-    # Open In...
-    atom.contextMenu.add {
-      'atom-text-editor': [
-                           {label: 'Open in Explorer', command: 'useful-context-menu:open-in-file-manager'}
-                           {label: 'Open in Terminal', command: 'useful-context-menu:open-in-terminal'}
-                          ]
-    }
-
+    isGrouped = atom.config.get("useful-context-menu.groupItems")
+    if isGrouped
+      @menuItems.add atom.contextMenu.add {
+        'atom-text-editor': [{
+          label: 'Useful',
+          submenu: [
+            # Copy...
+            {label: 'Copy File Path', command: 'useful-context-menu:copy-file-path'}
+            {label: 'Copy Filename', command: 'useful-context-menu:copy-filename'}
+            {label: 'Copy Folder Path', command: 'useful-context-menu:copy-folder-path'}
+            # Open In...
+            {label: 'Open in Explorer', command: 'useful-context-menu:open-in-file-manager'}
+            {label: 'Open in Terminal', command: 'useful-context-menu:open-in-terminal'}
+          ]
+        }]
+      }
+    else
+      # Copy...
+      @menuItems.add atom.contextMenu.add {
+        'atom-text-editor': [
+                             {label: 'Copy File Path', command: 'useful-context-menu:copy-file-path'},
+                             {label: 'Copy Filename', command: 'useful-context-menu:copy-filename'},
+                             {label: 'Copy Folder Path', command: 'useful-context-menu:copy-folder-path'}
+                            ]
+      }
+      # Open In...
+      @menuItems.add atom.contextMenu.add {
+        'atom-text-editor': [
+                             {label: 'Open in Explorer', command: 'useful-context-menu:open-in-file-manager'}
+                             {label: 'Open in Terminal', command: 'useful-context-menu:open-in-terminal'}
+                            ]
+      }
+    
     # End the section
-    atom.contextMenu.add {
+    @menuItems.add atom.contextMenu.add {
       'atom-text-editor': [{type: 'separator'}]
     }
