@@ -1,10 +1,10 @@
-## 0.3.0 - Second Release
+## 0.3.0
 * Grouping option (issue #3)
 
-## 0.2.1 - Second Release
+## 0.2.1
 * Fixing screenshots for atom.io site
 
-## 0.2.0 - Second Release
+## 0.2.0
 * Clean up the code (issue #2)
 * Updated the license
 * Added keywords to `package.json`
