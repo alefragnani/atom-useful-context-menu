@@ -1,3 +1,6 @@
+## 0.4.0 - License updated
+* License updated
+
 ## 0.3.0
 * Grouping option (issue #3)
 

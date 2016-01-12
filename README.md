@@ -26,3 +26,7 @@ By now, I have added a few actions
 ## Participate
 
 If you have any idea of other useful actions to be added, create an issue :)
+
+## License
+
+[MIT](LICENSE.md) &copy; Alessandro Fragnani
