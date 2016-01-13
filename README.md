@@ -17,7 +17,7 @@ By now, I have added a few actions
 - Open In File Manager
 - Open In Terminal
 
-![Useful Context Menu](https://raw.githubusercontent.com/alefragnani/useful-context-menu/master/screenshot.png)
+![Useful Context Menu](https://raw.githubusercontent.com/alefragnani/atom-useful-context-menu/master/screenshot.png)
 
 ## TODO List
 
