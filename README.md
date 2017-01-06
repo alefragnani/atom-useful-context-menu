@@ -19,10 +19,6 @@ By now, I have added a few actions
 
 ![Useful Context Menu](https://raw.githubusercontent.com/alefragnani/atom-useful-context-menu/master/screenshot.png)
 
-## TODO List
-
-- To be compatible with Mac OS X and Linux
-
 ## Participate
 
 If you have any idea of other useful actions to be added, create an issue :)
@@ -33,4 +29,4 @@ If you have any idea of other useful actions to be added, create an issue :)
 
 ---
 
-[![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=EP57F3B6FXKTU&lc=US&item_name=Alessandro%20Fragnani&item_number=atom%20plugins&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted) if you enjoy using this plugin :smile:
+[![Paypal Donations](https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=EP57F3B6FXKTU&lc=US&item_name=Alessandro%20Fragnani&item_number=atom%20plugins&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted) a :coffee: if you enjoy using this package :wink:

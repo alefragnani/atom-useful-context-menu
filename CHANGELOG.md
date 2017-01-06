@@ -1,3 +1,6 @@
+## 0.6.1 - Publishing fixes
+* Typo in `README.md`
+
 ## 0.6.0 - Donation button
 * Donation button added
 
