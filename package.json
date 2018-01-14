@@ -1,7 +1,7 @@
 {
   "name": "useful-context-menu",
   "main": "./lib/useful-context-menu",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "A set of useful context menu actions",
   "repository": "https://github.com/alefragnani/atom-useful-context-menu",
   "license": "MIT",
