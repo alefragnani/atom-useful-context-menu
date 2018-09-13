@@ -1,3 +1,6 @@
+## 0.7.0 - Patreon button
+* Patreon button added
+
 ## 0.6.1 - Publishing fixes
 * Typo in `README.md`
 
