@@ -1,5 +1,7 @@
 # Useful Context Menu Package for Atom
 
+> Following Atom archiving in December 15, 2022, this package will be archived as well. Learn more in their [official announcement](https://github.blog/2022-06-08-sunsetting-atom/)
+
 A set of useful context menu actions for Atom
 
 ## Available Actions
